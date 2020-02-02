@@ -110,7 +110,7 @@ func NewDefault(path string) *Logger {
 
 func SingleStore() *Logger {
 	storeOnce.Do(func() {
-		path := GetConfig().GetValue("log", "log_path")
+		path := GetConfig().GetValue("log", "path")
 		logger = NewDefault(path)
 	})
 	return logger

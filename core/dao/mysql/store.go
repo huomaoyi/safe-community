@@ -8,7 +8,9 @@
 package mysql
 
 import (
+	_ "github.com/go-sql-driver/mysql"
 	"github.com/jinzhu/gorm"
+	"log"
 	"safe-community/common"
 	"safe-community/core/dao/models"
 	"sync"
@@ -34,6 +36,7 @@ func NewStore(db *gorm.DB) *Store {
 func SingleStore() models.IStore {
 	storeOnce.Do(func() {
 		args := common.GetConfig().GetValue("database", "mysql_url")
+		log.Println("args: ", args)
 		var err error
 		gdb, err = gorm.Open("mysql", args)
 		if err != nil {
@@ -43,22 +46,6 @@ func SingleStore() models.IStore {
 		gorm.DefaultTableNameHandler = func(db *gorm.DB, defaultTableName string) string {
 			return defaultTableName
 		}
-		/*
-			var tables = []interface{}{
-				&models.Account{},
-				&models.Order{},
-				&models.Product{},
-				&models.User{},
-				&models.Bill{},
-				&models.Tick{},
-			}
-			for _, table := range tables {
-				logger.Infof("migrating database, table: %v", reflect.TypeOf(table))
-				if err = gdb.AutoMigrate(table).Error; err != nil {
-					panic(err)
-				}
-			}
-		*/
 
 		gdb.DB().SetMaxOpenConns(50)
 		gdb.DB().SetMaxIdleConns(50)
