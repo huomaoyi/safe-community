@@ -16,7 +16,7 @@ import (
 )
 
 const (
-	FileDir = "/Users/liteng/dev/src/github.com/huomaoyi/safe-community/config/"
+	FileDir = "/Users/liteng/dev/src/github.com/liteng0313/safe-community/config/"
 )
 
 var conf *config

@@ -11,4 +11,13 @@ type IStore interface {
 	BeginTx() (IStore, error)
 	Rollback() error
 	CommitTx() error
+
+	IUser
+}
+
+type IUser interface {
+	CreateUserAccount(user *UserAccount) error
+	CreateUserTemperature(tem *UserTemperature) error
+	GetUserAccountByAliaName(alia string) (*UserAccount, error)
+	GetTemperatureByAliaName(alia string)([]*UserTemperature, error)
 }
