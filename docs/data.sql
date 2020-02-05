@@ -29,3 +29,9 @@ create table user_temperature
   temperature decimal(32, 4) default 0.0000            null comment '用户体温'
 )
   comment '用户温度表';
+
+
+
+
+
+

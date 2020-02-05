@@ -23,4 +23,6 @@ type UserInfo struct {
 type UserTemperature struct {
 	AliaName string
 	Temperature float64
+	HealthStatus int
+	Others string
 }
