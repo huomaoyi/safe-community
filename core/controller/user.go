@@ -9,10 +9,17 @@ package controller
 
 import (
 	"github.com/gin-gonic/gin"
+	"log"
 	"net/http"
 	"safe-community/core/controller/vo"
 	"safe-community/core/service"
 )
+
+func UserShow(c *gin.Context) {
+	uid := c.Query("uid")
+	log.Println("uid: ", uid)
+	c.JSON(http.StatusOK, NewFrontData(OK, "hello user"))
+}
 
 func UserPersonalAccount(c *gin.Context) {
 	alia, ok := c.Get("alia")

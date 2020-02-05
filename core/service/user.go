@@ -54,6 +54,8 @@ func UserTemperaturePost(user vo.UserTemperature) error {
 	t := &models.UserTemperature{
 		AliaName:    user.AliaName,
 		Temperature: user.Temperature,
+		HealthStatus: user.HealthStatus,
+		Others: user.Others,
 	}
 
 	return mysql.SingleStore().CreateUserTemperature(t)
