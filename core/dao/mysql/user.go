@@ -13,6 +13,10 @@ func (s *Store) CreateUserAccount(userAccount *models.UserAccount) error {
 	return s.db.Create(userAccount).Error
 }
 
+func (s *Store) CreateUserInfo(userInfo *models.UserInfo) error {
+	return s.db.Create(userInfo).Error
+}
+
 func (s *Store) CreateUserTemperature(tem *models.UserTemperature) error {
 	return s.db.Create(tem).Error
 }

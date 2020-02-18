@@ -75,3 +75,7 @@ func UserTemperatureGet(alia string) ([]float64, error) {
 
 	return temps, nil
 }
+
+func UserInfoPost(userInfo *models.UserInfo) error {
+	return mysql.SingleStore().CreateUserInfo(userInfo)
+}

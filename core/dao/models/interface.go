@@ -18,6 +18,7 @@ type IStore interface {
 type IUser interface {
 	CreateUserAccount(user *UserAccount) error
 	CreateUserTemperature(tem *UserTemperature) error
+	CreateUserInfo(userInfo *UserInfo) error
 	GetUserAccountByAliaName(alia string) (*UserAccount, error)
 	GetTemperatureByAliaName(alia string)([]*UserTemperature, error)
 }

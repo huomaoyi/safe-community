@@ -58,3 +58,18 @@ func TestStore_GetTemperatureByAliaName(t *testing.T) {
 
 	log.Println(temperature)
 }
+
+func TestStore_CreateUserInfo(t *testing.T) {
+
+	userInfo := &models.UserInfo{
+		RealName:"aaa",
+		AliaName: "bbb",
+		WeiId:"111",
+		Phone:"123455",
+		Company:"edf",
+		Address:"hello world",
+
+	}
+
+	log.Fatal(SingleStore().CreateUserInfo(userInfo))
+}

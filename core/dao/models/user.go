@@ -28,6 +28,17 @@ type UserAccount struct {
 	City string
 }
 
+type UserInfo struct {
+	Base
+	RealName string
+	AliaName string
+	WeiId string
+	Phone string
+	Company string
+	Address string
+}
+
+
 type UserTemperature struct {
 	Base
 	AliaName string
