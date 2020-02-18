@@ -41,6 +41,7 @@ func InitRouter() *gin.Engine {
 	frontPublic := router.Group("/user")
 	{
 		frontPublic.GET("/show", UserShow)
+		frontPublic.POST("/info", UserPersonalInfo)
 		frontPublic.POST("/signup", UserAccountSignUp)       					// 用户账户注册
 		frontPublic.POST("/temperature", UserTemperature)       				// 用户温度上报
 		frontPublic.GET("personal/account", UserPersonalAccount)				// 用户个人信息查看

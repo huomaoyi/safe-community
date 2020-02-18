@@ -12,6 +12,7 @@ import (
 	"log"
 	"net/http"
 	"safe-community/core/controller/vo"
+	"safe-community/core/dao/models"
 	"safe-community/core/service"
 )
 
@@ -61,6 +62,21 @@ func UserTemperature(c *gin.Context) {
 	}
 
 	if err := service.UserTemperaturePost(t); err != nil {
+		c.JSON(http.StatusInternalServerError, NewFrontData(ErrorDatabase, nil))
+		return
+	}
+
+	c.JSON(http.StatusOK, NewFrontData(OK, nil))
+}
+
+func UserPersonalInfo(c *gin.Context) {
+	var info models.UserInfo
+	if err := c.BindJSON(&info); err != nil {
+		c.JSON(http.StatusBadRequest, NewFrontData(ErrorInvalidParamOfInterface, nil))
+		return
+	}
+
+	if err := service.UserInfoPost(&info); err != nil {
 		c.JSON(http.StatusInternalServerError, NewFrontData(ErrorDatabase, nil))
 		return
 	}
